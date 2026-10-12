@@ -1,0 +1,252 @@
+/* ===== style.css : ONE stylesheet shared by all 3 pages, so every page looks the same ===== */
+
+/* ---- 1. COLOURS (change a colour here and it changes on every page) ---- */
+:root {                              /* :root = the whole page; we store colours as variables */
+  --teal: #0f766e;                   /* main brand colour (header, links, buttons) */
+  --teal-dark: #115e59;              /* darker teal for hover effects */
+  --teal-light: #e6f4f1;             /* pale teal used for soft backgrounds */
+  --orange: #f59e0b;                 /* accent colour for highlights */
+  --ink: #1f2937;                    /* dark grey used for body text */
+  --paper: #fafaf7;                  /* off-white page background */
+  --line: #d1d5db;                   /* light grey for borders and lines */
+}
+
+/* ---- 2. BASIC PAGE SETTINGS ---- */
+* {                                  /* * = every element on the page */
+  box-sizing: border-box;            /* padding is counted inside an element's width (easier sizing) */
+}
+body {                               /* body = everything visible on the page */
+  margin: 0;                         /* removes the browser's default outer gap */
+  font-family: "Segoe UI", Arial, sans-serif; /* font; Arial is the backup if Segoe UI is missing */
+  font-size: 17px;                   /* normal text size */
+  line-height: 1.65;                 /* space between lines of text (makes it easier to read) */
+  color: var(--ink);                 /* text colour (uses the variable above) */
+  background: var(--paper);          /* page background colour */
+}
+main,                                /* the comma means: apply the rules below to main, header AND footer */
+header,
+footer {
+  max-width: 960px;                  /* content never gets wider than 960px, so lines stay readable */
+  margin: 0 auto;                    /* auto left/right margins centre the content */
+  padding: 0 20px;                   /* 20px breathing space on the left and right */
+}
+
+/* ---- 3. HEADINGS ---- */
+h1 {                                 /* h1 = the biggest heading (page title) */
+  font-size: 2.3rem;                 /* rem = relative to the base size, so 2.3 x 17px */
+  line-height: 1.2;                  /* tighter line spacing for big text */
+  color: var(--teal);                /* teal heading colour */
+  margin: 0.4em 0;                   /* space above and below */
+}
+h2 {                                 /* h2 = section headings */
+  font-size: 1.6rem;                 /* smaller than h1 */
+  color: var(--teal-dark);           /* dark teal */
+  border-left: 6px solid var(--orange); /* orange bar to the left of each section heading */
+  padding-left: 12px;                /* gap between the bar and the text */
+  margin-top: 1.6em;                 /* space above so sections are separated */
+}
+h3 {                                 /* h3 = sub-headings */
+  font-size: 1.2rem;                 /* smaller again */
+  color: var(--ink);                 /* normal dark text colour */
+}
+
+/* ---- 4. LINKS ---- */
+a {                                  /* a = every hyperlink */
+  color: var(--teal);                /* link colour */
+  font-weight: 600;                  /* semi-bold so links stand out */
+}
+a:hover {                            /* :hover = while the mouse is over the link */
+  color: var(--orange);              /* link turns orange */
+}
+
+/* ---- 5. HEADER AND NAVIGATION ---- */
+header {                             /* the top banner of each page */
+  padding-top: 20px;                 /* space above the site title */
+}
+.site-title {                        /* the small name line at the very top */
+  font-size: 0.95rem;                /* slightly smaller text */
+  text-transform: uppercase;         /* shows the words in CAPITALS */
+  letter-spacing: 2px;               /* spreads the letters out */
+  color: #6b7280;                    /* soft grey */
+  margin: 0;                         /* no extra gap */
+}
+nav {                                /* the menu bar */
+  background: var(--teal);           /* teal bar */
+  border-radius: 10px;               /* rounded corners */
+  margin: 12px 0;                    /* space above and below the bar */
+  padding: 6px;                      /* space inside the bar */
+}
+nav ul {                             /* the list that holds the menu links */
+  list-style: none;                  /* removes the bullet points */
+  margin: 0;                         /* removes default gap */
+  padding: 0;                        /* removes default indent */
+  display: flex;                     /* flexbox puts the links side by side in a row */
+  flex-wrap: wrap;                   /* on small screens the links drop to the next line */
+  gap: 6px;                          /* space between links */
+}
+nav a {                              /* each menu link */
+  display: block;                    /* makes the whole rectangle clickable */
+  padding: 8px 16px;                 /* space inside each button */
+  color: #fff;                       /* white text */
+  text-decoration: none;             /* removes the underline */
+  border-radius: 8px;                /* rounded button corners */
+}
+nav a:hover,                         /* when hovering over a link... */
+nav a.active {                       /* ...or when it is the page you are on (class="active") */
+  background: var(--teal-dark);      /* darker teal background */
+  color: #fff;                       /* keep the text white */
+}
+
+/* ---- 6. HORIZONTAL LINES (separate header / content / footer) ---- */
+hr {                                 /* hr = horizontal line */
+  border: 0;                         /* remove the default 3D border */
+  border-top: 2px solid var(--line); /* draw our own thin grey line */
+  margin: 2em 0;                     /* space above and below the line */
+}
+
+/* ---- 7. HOME-PAGE HERO AREA ---- */
+.hero {                              /* the big intro box on the home page */
+  background: var(--teal-light);     /* pale teal background */
+  border-radius: 16px;               /* rounded corners */
+  padding: 24px;                     /* space inside the box */
+  margin-bottom: 24px;               /* space below the box */
+}
+.hero p {                            /* paragraphs inside the hero box */
+  font-size: 1.1rem;                 /* slightly larger text */
+}
+
+/* ---- 8. CARDS (boxes that hold the focus question, focus area etc.) ---- */
+.cards {                             /* the container that holds several cards */
+  display: grid;                     /* grid layout = rows and columns */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* as many columns as fit; each at least 260px wide */
+  gap: 16px;                         /* space between cards */
+}
+.card {                              /* a single card */
+  background: #fff;                  /* white background */
+  border: 1px solid var(--line);     /* thin grey outline */
+  border-top: 5px solid var(--orange); /* thick orange top edge */
+  border-radius: 12px;               /* rounded corners */
+  padding: 16px 20px;                /* space inside the card */
+}
+.card h2 {                           /* headings inside a card */
+  border: 0;                         /* remove the orange bar used on normal h2s */
+  padding: 0;                        /* remove the gap used on normal h2s */
+  margin-top: 0;                     /* no gap above */
+  font-size: 1.25rem;                /* smaller than a section heading */
+}
+
+/* ---- 9. ABSTRACT BOX ---- */
+.abstract {                          /* the abstract on the home page */
+  background: #fff;                  /* white background */
+  border-left: 6px solid var(--teal);/* teal bar on the left */
+  padding: 8px 24px;                 /* space inside */
+  border-radius: 0 12px 12px 0;      /* rounds only the right-hand corners */
+}
+
+/* ---- 10. FIGURES (images and graphs with captions) ---- */
+img {                                /* every image */
+  max-width: 100%;                   /* never wider than its box (stops overflow on phones) */
+  height: auto;                      /* keeps the picture's proportions */
+  border-radius: 12px;               /* rounded corners */
+}
+figure {                             /* figure = image + caption together */
+  margin: 1.5em 0;                   /* space above and below */
+  background: #fff;                  /* white card behind the image */
+  border: 1px solid var(--line);     /* thin outline */
+  border-radius: 12px;               /* rounded corners */
+  padding: 12px;                     /* space inside */
+  text-align: center;                /* centres the image and caption */
+}
+figcaption {                         /* the caption text under an image */
+  font-size: 0.9rem;                 /* small text */
+  color: #4b5563;                    /* medium grey */
+  margin-top: 8px;                   /* gap between image and caption */
+}
+.charts {                            /* container that puts two graphs side by side */
+  display: grid;                     /* grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columns on desktops, 1 on phones */
+  gap: 16px;                         /* space between graphs */
+}
+
+/* ---- 11. STAT NUMBERS (big numbers on the research page) ---- */
+.stats {                             /* container for the big-number boxes */
+  display: grid;                     /* grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* boxes at least 180px wide */
+  gap: 14px;                         /* space between boxes */
+}
+.stat {                              /* one big-number box */
+  background: var(--teal);           /* teal background */
+  color: #fff;                       /* white text */
+  border-radius: 12px;               /* rounded corners */
+  padding: 16px;                     /* space inside */
+  text-align: center;                /* centred text */
+}
+.stat strong {                       /* the big number itself */
+  display: block;                    /* puts the number on its own line */
+  font-size: 2.2rem;                 /* very large */
+  color: var(--orange);              /* orange number */
+}
+
+/* ---- 12. TABLES ---- */
+table {                              /* every table */
+  width: 100%;                       /* full width of the page content */
+  border-collapse: collapse;         /* removes double borders between cells */
+  background: #fff;                  /* white background */
+  margin: 1em 0;                     /* space above and below */
+}
+th,                                  /* th = heading cell, td = normal cell */
+td {
+  border: 1px solid var(--line);     /* thin grey border around each cell */
+  padding: 10px 12px;                /* space inside each cell */
+  text-align: left;                  /* left-align the text */
+  vertical-align: top;               /* start the text at the top of the cell */
+}
+th {                                 /* heading cells only */
+  background: var(--teal);           /* teal background */
+  color: #fff;                       /* white text */
+}
+caption {                            /* the title above a table */
+  caption-side: top;                 /* places it above the table */
+  text-align: left;                  /* left-aligned */
+  font-weight: 600;                  /* bold-ish */
+  padding-bottom: 6px;               /* gap between title and table */
+}
+tr:nth-child(even) td {              /* every second row... */
+  background: #f3f4f6;               /* ...gets a light grey background (zebra stripes) */
+}
+
+/* ---- 13. LISTS, QUOTES AND SMALL EXTRAS ---- */
+li {                                 /* every list item */
+  margin-bottom: 0.4em;              /* small gap between items */
+}
+blockquote {                         /* a highlighted quote or key message */
+  margin: 1.5em 0;                   /* space above and below */
+  padding: 12px 20px;                /* space inside */
+  background: #fff7e0;               /* pale yellow background */
+  border-left: 6px solid var(--orange); /* orange bar on the left */
+  border-radius: 0 12px 12px 0;      /* rounds the right-hand corners */
+}
+.back-top {                          /* the "Back to top" link style */
+  display: inline-block;             /* lets us add space around the link */
+  margin-top: 10px;                  /* gap above */
+}
+
+/* ---- 14. FOOTER ---- */
+footer {                             /* the bottom area of each page */
+  padding-bottom: 30px;              /* space at the very bottom */
+  font-size: 0.9rem;                 /* smaller text */
+  color: #4b5563;                    /* medium grey */
+}
+footer p {                           /* paragraphs in the footer */
+  margin: 0.4em 0;                   /* tighter spacing */
+}
+
+/* ---- 15. PHONES (screens narrower than 600px) ---- */
+@media (max-width: 600px) {          /* these rules only apply on small screens */
+  h1 {
+    font-size: 1.8rem;               /* smaller main heading on phones */
+  }
+  body {
+    font-size: 16px;                 /* slightly smaller text on phones */
+  }
+}
